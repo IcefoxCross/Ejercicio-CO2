@@ -1,20 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 const Header = () => {
     return(
-        <div>
-            <h3>Gestion de Viajes</h3>
-            <ul>
-                <li>
-                    <Link to="/lista">Listado de Viajes</Link>
-                </li>
-                <li>
-                    <Link to ="/nuevo">Nuevo Viaje</Link>
-                </li>
-            </ul>
-            <hr />
-        </div>
+        <Navbar bg="light" expand="lg">
+            <Navbar.Brand >Gestion de Viajes</Navbar.Brand>
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Nav.Link as={Link} to ="/lista">Listado de Viajes</Nav.Link>
+                    <Nav.Link as={Link} to="/nuevo">Nuevo Viaje</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     )
 }
 

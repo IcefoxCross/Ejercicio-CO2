@@ -1,5 +1,4 @@
 import React from 'react';
-import './viaje.css';
 
 const Viaje = ({viaje, index}) => {
 

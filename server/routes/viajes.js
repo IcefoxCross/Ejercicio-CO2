@@ -5,6 +5,8 @@ const Viaje = require('../models/viaje');
 // FUNCS
 const calcularEmision = (medio, km, ida_vuelta, personas) => {
     const coeficientes = {
+        "Metro (Tren, Subway, Subterráneo)": 0.033,
+        "Auto (Gasolina)": 0.21,
         "Camioneta (Diésel)": 0.249,
         "Motocicleta (Gasolina)": 0.092,
         "Bus Transantiago (Transporte público)": 0.039,
@@ -55,16 +57,11 @@ router.post('/', (req,res) => {
         fecha: fecha
     });
 
-    // TODO: revisar si ya existe el viaje
-    if (getViaje(viaje) !== null) {
-        res.status(500).json({message: "El viaje ya existe."});
-    } else {
-        viaje.save().then(savedViaje => {
-            res.json(savedViaje);
-        }).catch((err) => {
-            res.status(400).json({ message: err.message });
-        });
-    }
+    viaje.save().then(savedViaje => {
+        res.json(savedViaje);
+    }).catch((err) => {
+        res.status(400).json({ message: err.message });
+    });
 });
 
 module.exports = router;
